@@ -56,7 +56,7 @@ library(ggpubr)
 # Plotting all proteins
 plots <- lapply(proteins, plot_violin_with_stats)
 
-# Pplots in a grid and assign to a variable
+# Plots in a grid and assign to a variable
 combined_plot <- ggarrange(plotlist = plots, ncol = 3, nrow = 2)
 combined_plot
 # Saving the combined plot
