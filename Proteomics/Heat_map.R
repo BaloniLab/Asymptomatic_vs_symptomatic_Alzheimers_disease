@@ -45,7 +45,7 @@ plot <- pheatmap(df,
          cluster_cols = FALSE,
          show_rownames = TRUE,
          show_colnames = TRUE,
-         fontsize = 20,  # Adjust overall text size
+         fontsize = 20, 
          main = "Cell-type corrected median mitochondrial protein expression",
          color = colorRampPalette(c("#00008B", "white", "#8B0000"))(50))  
 plot
