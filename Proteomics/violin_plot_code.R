@@ -6,7 +6,7 @@ library(tidyr)
 library(tidyverse)
 library(tibble)
 
-# Read the files
+# Reading the files
 setwd("/depot/pbaloni/data/Lab_members/Purba_Mandal/Proteomics/Brain_regions/BA9(Banner+ROSMAP)")
 expr <- read.csv("Aggregated_expression_matrix.csv", row.names = 1, check.names = FALSE)
 metadata <- read.csv("Final_metadata.csv")  
@@ -19,7 +19,7 @@ expr_long <- as.data.frame(expr[proteins, ]) %>%
   rownames_to_column("proteins") %>%
   pivot_longer(-proteins, names_to = "sample_id", values_to = "expr")
 
-# Join with metadata
+# Joining with metadata
 expr_merged <- expr_long %>%
   left_join(metadata, by = "sample_id") 
 expr_merged$diagnosis <- factor(expr_merged$diagnosis, levels = c("Control", "AD", "AsymAD"))
@@ -53,12 +53,12 @@ plot_violin_with_stats <- function(proteins_name) {
 
 library(ggpubr)
 
-# Plot all proteins
+# Plotting all proteins
 plots <- lapply(proteins, plot_violin_with_stats)
 
-# Arrange the plots in a grid and assign to a variable
+# Pplots in a grid and assign to a variable
 combined_plot <- ggarrange(plotlist = plots, ncol = 3, nrow = 2)
 combined_plot
-# Save the combined plot
+# Saving the combined plot
 ggsave("violin_plot_fission.png", plot = combined_plot, dpi = 600, bg = "transparent", limitsize = FALSE)
 
